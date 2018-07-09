@@ -1,0 +1,8 @@
+//用于3的倍数第一个样式 即1 4 7
+.list:nth-of-type(3n+1){
+  margin-right:2%;
+}
+//用于3的倍数第二个样式 即2 5 8
+.list:nth-of-type(3n+2){
+  margin-right:2%;
+}
