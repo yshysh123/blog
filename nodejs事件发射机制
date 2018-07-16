@@ -1,0 +1,16 @@
+//发射
+import EventEmitter from 'events'
+export const emitter = new EventEmitter()
+emitter.emit('promotionDeleted')
+
+//接收
+import Promotion, { emitter as promotionEmitter } from 'components/Promotion'
+//声明周期开始时监听'promotionDeleted'触发，触发之后执行getSearch函数
+componentDidMount() {
+  emitter.on('importSku', this.getSearch)
+  promotionEmitter.on('promotionDeleted', this.getSearch)
+}
+//声明周期结束时释放'promotionDeleted'
+componentWillUnmount() {
+  promotionEmitter.removeListener('promotionDeleted', this.getSearch)
+}
