@@ -6,3 +6,5 @@
 .list:nth-of-type(3n+2){
   margin-right:2%;
 }
+//css3 calc计算
+height:calc(100%-54px);
