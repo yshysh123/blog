@@ -12,7 +12,6 @@
 * [moxios](https://npm.taobao.org/package/moxios) 模拟axios测试接口用。
 * [fetch-mock](https://npm.taobao.org/package/fetch-mock) 模拟fetch测试接口用。
 * [nightwatch](https://npm.taobao.org/package/nightwatch) 可以调用实际浏览器编写e2e测试的工具。
-* [nightwatch](https://npm.taobao.org/package/nightwatch) 可以调用实际浏览器编写e2e测试的工具。
 * [portfinder](https://npm.taobao.org/package/portfinder) node环境下检测指定端口是否可用。
 * [chalk](https://npm.taobao.org/package/chalk) 可以将console.log以彩色的方式输出的工具。
 * [path-to-regexp](https://npm.taobao.org/package/path-to-regexp) 抓取匹配路由路径中的参数。
