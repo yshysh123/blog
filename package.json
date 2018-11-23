@@ -1,0 +1,31 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "blog react",
+  "main": "index.js",
+  "scripts": {
+    "commit": "git-cz",
+    "changelog": "npx conventional-changelog -p angular -i CHANGELOG.md -s -r 10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yshysh123/blog.git"
+  },
+  "author": "389636851@qq.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yshysh123/blog/issues"
+  },
+  "homepage": "https://github.com/yshysh123/blog#readme",
+  "gitHooks": {
+    "commit-msg": "npx commitlint -E GIT_PARAMS"
+  },
+  "dependencies": {
+    "@commitlint/prompt-cli": "^7.2.1",
+    "commitizen": "^3.0.4",
+    "commitlint": "^7.2.1",
+    "conventional-changelog-cli": "^2.0.5",
+    "cz-conventional-changelog": "^2.1.0",
+    "yorkie": "^2.0.0"
+  }
+}
