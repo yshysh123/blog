@@ -1,1 +1,22 @@
 
+devServer: {
+    historyApiFallback: true,
+    host: '0.0.0.0',
+    inline: true,
+    hot: true,
+    disableHostCheck: true,
+    contentBase: './public',
+    proxy: {
+      [appConfig.baseURL]: {
+        target: proxyTargets[envProxy],
+        pathRewrite: { [`^${appConfig.baseURL}`]: '' },
+        secure: false,
+        // changeOrigin: true,
+      },
+    },
+    port,
+    https: protocal === 'https',
+    after: () => {
+      opn(`${protocal}://${host}:${port}`)
+    },
+  },
