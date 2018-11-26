@@ -17,15 +17,17 @@
     "url": "https://github.com/yshysh123/blog/issues"
   },
   "homepage": "https://github.com/yshysh123/blog#readme",
-  "gitHooks": {
-    "commit-msg": "npx commitlint -E GIT_PARAMS"
-  },
   "dependencies": {
     "@commitlint/prompt-cli": "^7.2.1",
     "commitizen": "^3.0.4",
     "commitlint": "^7.2.1",
     "conventional-changelog-cli": "^2.0.5",
     "cz-conventional-changelog": "^2.1.0",
+    "markdownlint": "^0.11.0",
+    "markdownlint-cli": "^0.13.0",
     "yorkie": "^2.0.0"
+  },
+  "gitHooks": {
+    "commit-msg": "npx commitlint -E GIT_PARAMS"
   }
 }
