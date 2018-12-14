@@ -53,47 +53,61 @@ nodejs 是一门更新很快的语言，我们常常要维护老项目，老项�
   - 需要较多配置
   - 可以使用快照测试，但依然需要额外配置
 
-个人推荐使用jest进行单元测试。理由如下：
+个人推荐使用 jest 进行单元测试。理由如下：
 
-  - jest与babel对es6的转码集成良好。
-  - jest的api文档完整且api设计良好。
-  - jest对异步代码测试内置支持完善。
-  - jest内置完善的mock与stub工具。
-  - jest运行如飞。
-  - jest可自调用istanbul，无痛生成覆盖率统计文档。
-  - jest使用约定大于配置的原则，需配置项较少，且同时兼顾定制需求。
-  - 使用jsdom，在nodejs环境可模拟浏览器环境，与jest集成后测试前端的浏览器环境代码。
-  - jest文档丰富且有广泛的开发者基础。
+- jest 与 babel 对 es6 的转码集成良好。
+- jest 的 api 文档完整且 api 设计良好。
+- jest 对异步代码测试内置支持完善。
+- jest 内置完善的 mock 与 stub 工具。
+- jest 运行如飞。
+- jest 可自调用 istanbul，无痛生成覆盖率统计文档。
+- jest 使用约定大于配置的原则，需配置项较少，且同时兼顾定制需求。
+- 使用 jsdom，在 nodejs 环境可模拟浏览器环境，与 jest 集成后测试前端的浏览器环境代码。
+- jest 文档丰富且有广泛的开发者基础。
 
 ### 函数式单元测试步骤
 
 #### 测试前须知
 
-  1. 使用Jest进行单元测试必须保证函数式纯函数。即函数有入参并以return结尾。
-  2. 函数尽量不要依赖外部变量。
-  3. react函数（返回值为JSX）不输入该测试范围
+1. 使用 Jest 进行单元测试必须保证函数式纯函数。即函数有入参并以 return 结尾。
+2. 函数尽量不要依赖外部变量。
+3. react 函数（返回值为 JSX）不输入该测试范围
+4. jest 配置：在根目录下创建 jest.config.js 具体配置见 jest.config.js
 
 #### 测试步骤
 
-  1. 写一个纯函数
+1. 写一个纯函数
 
-  ```bash
-    export default function(a){
-      return a+2
-    }
-  ```
+```bash
+  export default function(a){
+    return a+2
+  }
+```
 
-  2. 在__test__文件夹下建一个文件 fn.test.js
+2. 在**test**文件夹下建一个文件 fn.test.js
 
-  3. 进行单元测试
+3. 进行单元测试
 
-  ```bash
-  import fn from 'util/fn'
-  describe('util/fn', () => {
-    it('测试fn方法', () => {
-      expect(fn(2)).toBe(4)
-      expect(fn(3)).not.toBe(4)
-    })
+```bash
+import fn from 'util/fn'
+describe('util/fn', () => {
+  it('测试fn方法', () => {
+    expect(fn(2)).toBe(4)
+    expect(fn(3)).not.toBe(4)
   })
-  ```
-  
+})
+```
+
+### 组件单元测试步骤
+
+#### 测试前须知
+
+1. 使用 Jest 进行组件测试需要模拟浏览器环境，目前与 react 配合较好的是 enzyme 及 jsdom。
+2. 一个测试用例只做一件事，所以尽可能将组件拆分为最小单元。
+3. 模拟数据及接口使用 fetch-mock
+4. 在测试之前执行 steup 函数将所有环境模拟好，在测试中直接使用即可
+
+
+### E2E单元测试步骤
+
+#### 测试前须知
