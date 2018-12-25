@@ -5,13 +5,13 @@
   	* constructor 
   	* getInitialState 
   	* getDefaultProps 
-  	* componentWillMount 
+  	* componentWillMount    //react16之后即将移除
   	* render 
   	* componentDidMount 
   	更新过程
-  	* componentWillReceiveProps 
+  	* componentWillReceiveProps    //react16之后即将移除
   	* shouldComponentUpdate 
-  	* componentWillUpdate 
+  	* componentWillUpdate    //react16之后即将移除
   	* render 
   	* componentDidUpdate 
   	卸载过程
