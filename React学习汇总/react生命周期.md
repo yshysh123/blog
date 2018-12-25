@@ -1,5 +1,25 @@
 # 生命周期
 
+渲染过程调用到的生命周期函数，主要几个要知道：
+  	* constructor 
+  	* getInitialState 
+  	* getDefaultProps 
+  	* componentWillMount 
+  	* render 
+  	* componentDidMount 
+
+  	更新过程
+
+  	* componentWillReceiveProps 
+  	* shouldComponentUpdate 
+  	* componentWillUpdate 
+  	* render 
+  	* componentDidUpdate 
+
+  	卸载过程
+
+  	* componentWillUnmount
+
 ```bash
 import React from 'react'
 import ReactDOM from 'react-dom';
