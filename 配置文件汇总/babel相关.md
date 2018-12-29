@@ -45,3 +45,13 @@ module: {
     ]
   }
 ```
+
+### babel-polyfill
+
+babel-polyfill。它需要在我们项目的入口文件中被引入，或者在 webpack.config.js 中配置。
+
+一般写在入口文件 app.js 或者 main.js 中
+
+```bash
+import "babel-polyfill";
+```
