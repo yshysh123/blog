@@ -21,7 +21,8 @@
 
 ## TODO
 
-  * Nextjs Nuxtjs服务端渲染学习
+  * Nextjs Nuxtjs服务端渲染学习 50%
+  * UI库编写
 
 ## blog内容
 
