@@ -21,9 +21,14 @@
 
 ## TODO
 
-  * Nextjs Nuxtjs服务端渲染学习
+  * Nextjs Nuxtjs服务端渲染学习 50%
+  * UI库编写
 
 ## blog内容
+
+### CSS学习
+
+ * [css小技巧](https://github.com/yshysh123/blog/blob/master/Css%E5%AD%A6%E4%B9%A0%E6%B1%87%E6%80%BB/css%E5%B0%8F%E6%8A%80%E5%B7%A7)
 
 ### react学习
 
@@ -33,3 +38,11 @@
  * [classNames](https://github.com/yshysh123/blog/blob/master/React%E5%AD%A6%E4%B9%A0%E6%B1%87%E6%80%BB/classnames.md)
 
 ### 配置文件汇总
+
+ * [babel相关](https://github.com/yshysh123/blog/blob/master/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%B1%87%E6%80%BB/babel%E7%9B%B8%E5%85%B3.md)
+ * [nginx反向代理](https://github.com/yshysh123/blog/blob/master/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%B1%87%E6%80%BB/nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86.md)
+ * [nginx命令](https://github.com/yshysh123/blog/blob/master/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%B1%87%E6%80%BB/nginx%E5%91%BD%E4%BB%A4.md)
+ * [nginx常用配置](https://github.com/yshysh123/blog/blob/master/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%B1%87%E6%80%BB/nginx%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE)
+ * [nginx负载均衡](https://github.com/yshysh123/blog/blob/master/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%B1%87%E6%80%BB/nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1.md)
+ * [webpack4.0配置](https://github.com/yshysh123/blog/blob/master/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%B1%87%E6%80%BB/webpack4.0%E9%85%8D%E7%BD%AE.md)
+ * [webpack常用配置](https://github.com/yshysh123/blog/blob/master/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%B1%87%E6%80%BB/webpack%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE)
