@@ -1,6 +1,6 @@
-# webpack4.0配置
+# webpack4.0 配置
 
-* 首先 在根目录下创建一个webpack.config.js，默认配置如下:
+- 首先 在根目录下创建一个 webpack.config.js，默认配置如下:
 
   ```bash
     module.exports = {
@@ -13,19 +13,21 @@
     }
   ```
 
-* devServer服务器配置需要webpack-dev-server
+- devServer 服务器配置需要 webpack-dev-server
 
   ```bash
     npm i webpack-dev-server -D
   ```
 
-* 配置Html模板
-  * 我们需要实现html打包功能，可以通过一个模板实现打包出引用好路径的html来，这就需要用到一个常用的插件了，html-webpack-plugin，用之前我们来安一下它
+- 配置 Html 模板
+
+  - 我们需要实现 html 打包功能，可以通过一个模板实现打包出引用好路径的 html 来，这就需要用到一个常用的插件了，html-webpack-plugin，用之前我们来安一下它
 
     ```bash
       npm i html-webpack-plugin -D
     ```
-  * 使用方式如下
+
+  - 使用方式如下
     ```bash
     let path = require('path');
     // 插件都是一个类，所以我们命名的时候尽量用大写开头
@@ -34,7 +36,7 @@
       entry: './src/index.js',
       output: {
           // 添加hash可以防止文件缓存，每次都会生成4位的hash串
-          filename: 'bundle.[hash:4].js',   
+          filename: 'bundle.[hash:4].js',
           path: path.resolve('dist')
       },
       plugins: [
@@ -48,21 +50,22 @@
       ]
     }
     ```
-* 引用CSS文件
-  * 需要下载一些解析css样式的loader
+
+- 引用 CSS 文件
+  - 需要下载一些解析 css 样式的 loader
     ```bash
       npm i style-loader css-loader -D
       // 引入less文件的话，也需要安装对应的loader
       npm i less less-loader -D
     ```
-  * 配置css文件的解析
+  - 配置 css 文件的解析
     ```bash
       module: {
         rules: [
           {
             test: /\.css$/,     // 解析css
             use: ['style-loader', 'css-loader'] // 从右向左解析
-            /* 
+            /*
               也可以这样写，这种方式方便写一些配置参数
               use: [
                 {loader: 'style-loader'},
@@ -73,13 +76,14 @@
         ]
       }
     ```
-  * less sass文件同理，需要对应配置test和对应的loader
-* 拆分\压缩CSS
-  * 需要用到对应的拆分CSS的插件
+    同时 style-loader 为 css 提供了动态加载和卸载的方法：[webpack 常用配置](./webpack常用配置.md)
+  - less sass 文件同理，需要对应配置 test 和对应的 loader
+- 拆分\压缩 CSS
+  - 需要用到对应的拆分 CSS 的插件
     ```bash
       npm i mini-css-extract-plugin -D
     ```
-  * 配置如下
+  - 配置如下
     ```bash
       const MiniCssExtractPlugin = require('mini-css-extract-plugin');
       //判断是否是生产环境，如果是生产环境走MinicssExtractPlugin.loader，开发环境不压缩css，走style-loader并打开sourceMap
@@ -107,13 +111,13 @@
         ]
       }
     ```
-* 处理图片、视频、字体、svg等等
-  * 处理图片方面，也需要loader
+- 处理图片、视频、字体、svg 等等
+  - 处理图片方面，也需要 loader
     ```bash
       npm i file-loader url-loader -D
       npm i svg-sprite-loader -D
     ```
-  * 配置如下
+  - 配置如下
     ```bash
     {
       test: /\.(jpe?g|png|gif|ico)$/,
@@ -152,18 +156,18 @@
       use: ['url-loader?limit=10000&name=' + '/fonts/[name].[ext]?[hash]'],
     },
     ```
-* 添加CSS3前缀
-  * 通过postcss中的autoprefixer可以实现将CSS3中的一些需要兼容写法的属性添加响应的前缀，这样省去我们不少的时间
+- 添加 CSS3 前缀
+  - 通过 postcss 中的 autoprefixer 可以实现将 CSS3 中的一些需要兼容写法的属性添加响应的前缀，这样省去我们不少的时间
     ```bash
       npm i postcss-loader autoprefixer -D
     ```
-  * 安装后，我们还需要像webpack一样写一个config的配置文件，在项目根目录下创建一个postcss.config.js文件，配置如下：
+  - 安装后，我们还需要像 webpack 一样写一个 config 的配置文件，在项目根目录下创建一个 postcss.config.js 文件，配置如下：
     ```bash
       module.exports = {
         plugins: [require('autoprefixer')]  // 引用该插件即可了
       }
     ```
-  * 然后在webpack里配置postcss-loader
+  - 然后在 webpack 里配置 postcss-loader
     ```bash
       module.exports = {
         module: {
@@ -176,20 +180,20 @@
         }
       }
     ```
-* 转义ES6
-  * 在实际开发中，我们在大量的使用着ES6及之后的api去写代码，这样会提高我们写代码的速度，不过由于低版本浏览器的存在，不得不需要转换成兼容的代码，于是就有了常用的Babel了。
-  Babel会将ES6的代码转成ES5的代码
+- 转义 ES6
+  - 在实际开发中，我们在大量的使用着 ES6 及之后的 api 去写代码，这样会提高我们写代码的速度，不过由于低版本浏览器的存在，不得不需要转换成兼容的代码，于是就有了常用的 Babel 了。
+    Babel 会将 ES6 的代码转成 ES5 的代码
     ```bash
       npm i babel-core babel-loader babel-preset-env babel-preset-stage-0 -D
     ```
-  * 当把这些都安好后，我们就开始配置，由于要兼容的代码不仅仅包含ES6还有之后的版本和那些仅仅是草案的内容，所以我们可以通过一个.babelrc文件来配置一下，对这些版本的支持
+  - 当把这些都安好后，我们就开始配置，由于要兼容的代码不仅仅包含 ES6 还有之后的版本和那些仅仅是草案的内容，所以我们可以通过一个.babelrc 文件来配置一下，对这些版本的支持
     ```bash
       // .babelrc
       {
           "presets": ["env", "stage-0"]   // 从右向左解析
       }
     ```
-  * 我们再在webpack里配置一下babel-loader既可以做到代码转成ES5了
+  - 我们再在 webpack 里配置一下 babel-loader 既可以做到代码转成 ES5 了
     ```bash
       module.exports = {
         module: {
@@ -204,9 +208,9 @@
         }
       }
     ```
-* 启动静态服务器
-  * devServer配置见[webpack常用配置](./webpack常用配置)
-  * 热更新还需要在入口文件内判断开启
+- 启动静态服务器
+  - devServer 配置见[webpack 常用配置](./webpack常用配置.md)
+  - 热更新还需要在入口文件内判断开启
     ```bash
       // 还需要在主要的js文件里写入下面这段代码
       if (module.hot) {
@@ -214,12 +218,13 @@
           module.hot.accept();
       }
     ```
-* resolve解析
-  * resolve配置见[webpack常用配置](./webpack常用配置)
+- resolve 解析
 
-* 提取公共代码
-  * 在webpack4之前，提取公共代码都是通过一个叫CommonsChunkPlugin的插件来办到的。到了4以后，内置了一个一模一样的功能，而且起了一个好听的名字叫“优化”
-  * 配置如下
+  - resolve 配置见[webpack 常用配置](./webpack常用配置.md)
+
+- 提取公共代码
+  - 在 webpack4 之前，提取公共代码都是通过一个叫 CommonsChunkPlugin 的插件来办到的。到了 4 以后，内置了一个一模一样的功能，而且起了一个好听的名字叫“优化”
+  - 配置如下
     ```bash
       const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
       const UglifyJsPlugin = require('uglifyjs-webpack-plugin');

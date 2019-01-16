@@ -1,4 +1,6 @@
+### webpack-dev-server 配置
 
+```bash
 //webpack devServer配置
 devServer: {
   historyApiFallback: true,
@@ -21,16 +23,17 @@ devServer: {
     opn(`${protocal}://${host}:${port}`)
   },
 },
+```
 
-//webpack resolve配置
+### webpack-resolve 配置
+
+```bash
+//webpack resolve 配置
 const path = require('path')
 // 确保不同环境传入的路径是一样的
 const resolvePath = relativePath =>
-  path.resolve(`${__dirname}/..`, relativePath)
-/**
- * 创建 import 或 require 的别名，来确保模块引入变得更简单。
- * 在使用中，不需要../../tool/xxx 直接使用tool/xxx
- */
+path.resolve(`${__dirname}/..`, relativePath)
+
 const alias = {
   tool: resolvePath('./src/tool'),
   components: resolvePath('./src/components'),
@@ -39,14 +42,33 @@ const alias = {
   style: resolvePath('./src/style'),
   locale: resolvePath('./src/locale'),
   src: resolvePath('./src'),
-  fixture: resolvePath('./__tests__/fixture'),
+  fixture: resolvePath('./**tests**/fixture'),
 }
 module.exports = {
   alias,
-  /**
-   * 自动解析确定的扩展。
-   * 能够使用户在引入模块时不带扩展
-   */
   extensions: ['.js', '.jsx', '.css', '.less', '.vue'],
 }
 
+```
+
+### webpack-css 动态按需加载
+
+style-loader 为 css 对象提供了 use()和 unuse()两种方法，借助这两种方法，可以方便快捷地加载和卸载 css 样式。
+
+```bash
+module: {
+  rules: [
+    {
+      test: /\.css$/,
+      use: [
+        {
+          loader: "style-loader/useable" // 注意此处的style-loader后面的 useable
+        },
+        {
+          loader: "css-loader"
+        }
+      ]
+    }
+  ]
+}
+```

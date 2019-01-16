@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
+  <body>
+    <div style="display: none">
+      <img id="img" src="./images/3.png" width="300" height="300" />
+    </div>
+    <canvas id="myCanvas" width="300" height="300"></canvas>
+    <script type="text/javascript">
+      var canvas = document.getElementById("myCanvas");
+      var ctx = canvas.getContext("2d");
+      let image = document.getElementById("img");
+      let pixels = []; //存储像素数据
+      let imageData;
+
+      ctx.drawImage(
+        image,
+        (canvas.width - image.width) / 2,
+        (canvas.height - image.height) / 2,
+        image.width,
+        image.height
+      );
+      imageData = ctx.getImageData(
+        (canvas.width - image.width) / 2,
+        (canvas.height - image.height) / 2,
+        image.width,
+        image.height
+      ); //获取图表像素信息
+      console.log(imageData);
+      getPixels();
+      drawPixels();
+      function getPixels() {
+        var pos = 0;
+        var data = imageData.data; //RGBA的一维数组数据
+        //源图像的高度和宽度为300px
+        for (var i = 1; i <= image.width; i++) {
+          for (var j = 1; j <= image.height; j++) {
+            pos = [(i - 1) * image.width + (j - 1)] * 4; //取得像素位置
+            if (data[pos] >= 0) {
+              var pixel = {
+                x: (canvas.width - image.width) / 2 + j + Math.random() * 20, //重新设置每个像素的位置信息
+                y: (canvas.height - image.height) / 2 + i + Math.random() * 20, //重新设置每个像素的位置信息
+                fillStyle:
+                  "rgba(" +
+                  data[pos] +
+                  "," +
+                  data[pos + 1] +
+                  "," +
+                  data[pos + 2] +
+                  "," +
+                  data[pos + 3] +
+                  ")"
+              };
+              pixels.push(pixel);
+            }
+          }
+        }
+      }
+      function drawPixels() {
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        var len = pixels.length,
+          curr_pixel = null;
+        for (var i = 0; i < len; i++) {
+          curr_pixel = pixels[i];
+          ctx.fillStyle = curr_pixel.fillStyle;
+          ctx.fillRect(curr_pixel.x, curr_pixel.y, 1, 1);
+        }
+      }
+    </script>
+  </body>
+</html>
