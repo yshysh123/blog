@@ -37,7 +37,10 @@
  * [react生命周期](https://github.com/yshysh123/blog/blob/master/React%E5%AD%A6%E4%B9%A0%E6%B1%87%E6%80%BB/react%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.md)
  * [classNames](https://github.com/yshysh123/blog/blob/master/React%E5%AD%A6%E4%B9%A0%E6%B1%87%E6%80%BB/classnames.md)
 
-### 配置文件汇总
+### 单元测试学习
+ * [前端React单元测试分享](https://github.com/yshysh123/blog/blob/master/%E5%89%8D%E7%AB%AF%E6%B5%8B%E8%AF%95%E6%B1%87%E6%80%BB/%E5%89%8D%E7%AB%AFReact%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E5%88%86%E4%BA%AB.md)
+
+### 配置文件汇总 
 
  * [babel相关](https://github.com/yshysh123/blog/blob/master/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%B1%87%E6%80%BB/babel%E7%9B%B8%E5%85%B3.md)
  * [nginx反向代理](https://github.com/yshysh123/blog/blob/master/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%B1%87%E6%80%BB/nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86.md)
