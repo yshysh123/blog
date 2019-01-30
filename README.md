@@ -36,6 +36,8 @@
  * [react16-hooks](https://github.com/yshysh123/blog/blob/master/React%E5%AD%A6%E4%B9%A0%E6%B1%87%E6%80%BB/react16-hooks.md)
  * [react生命周期](https://github.com/yshysh123/blog/blob/master/React%E5%AD%A6%E4%B9%A0%E6%B1%87%E6%80%BB/react%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.md)
  * [classNames](https://github.com/yshysh123/blog/blob/master/React%E5%AD%A6%E4%B9%A0%E6%B1%87%E6%80%BB/classnames.md)
+ * [react_comp](https://github.com/yshysh123/blog/blob/master/React%E5%AD%A6%E4%B9%A0%E6%B1%87%E6%80%BB/react_comp.md)
+ * [React性能优化](https://github.com/yshysh123/blog/blob/master/React%E5%AD%A6%E4%B9%A0%E6%B1%87%E6%80%BB/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.md)
 
 ### 单元测试学习
  * [前端React单元测试分享](https://github.com/yshysh123/blog/blob/master/%E5%89%8D%E7%AB%AF%E6%B5%8B%E8%AF%95%E6%B1%87%E6%80%BB/%E5%89%8D%E7%AB%AFReact%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E5%88%86%E4%BA%AB.md)
