@@ -41,6 +41,9 @@
 
 ### 单元测试学习
  * [前端React单元测试分享](https://github.com/yshysh123/blog/blob/master/%E5%89%8D%E7%AB%AF%E6%B5%8B%E8%AF%95%E6%B1%87%E6%80%BB/%E5%89%8D%E7%AB%AFReact%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E5%88%86%E4%BA%AB.md)
+ 
+### Puppeteer学习
+ * [PuppeteerAPI](https://github.com/yshysh123/blog/blob/master/puppeteer学习/puppeterAPI.md)
 
 ### 配置文件汇总 
 
