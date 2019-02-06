@@ -1,5 +1,15 @@
 ```
 /**
+ * 交换数组中两元素位置
+ * @param       : i, j: 待交换的两元素下标
+ */
+Array.prototype.swap = function(i, j) {
+  const temp = this[i];
+  this[i] = this[j];
+  this[j] = temp;
+}
+
+/**
  * 冒泡排序
  * @param       : <Array> target数组
  * @description : 冒泡排序，更贴切的形容应该是沉底排序，每一轮内循环就是最大数沉底了。
