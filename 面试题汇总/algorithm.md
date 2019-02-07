@@ -24,4 +24,21 @@ function bubbleSort(target) {
   }
   return target;
 };
+
+/**
+ * 选择排序
+ * @param       : <Array> target数组
+ * @description : 一次内循环得到最大值的下标，然后只交换一次次序，将最大值和内循环末尾对调。
+ */
+function selectSort(target) {
+  for(var j = target.length; j > 0; j--) {
+    var maxIndex = 0;
+    for(var i = 1; i < j; i++) {
+      maxIndex = target[maxIndex] > target[i] ? maxIndex : i;
+    }
+    target.swap(maxIndex, j - 1);
+  }
+  return target;
+};
 ```
+
