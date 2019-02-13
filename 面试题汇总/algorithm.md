@@ -1,3 +1,5 @@
+# 排序
+
 ```
 /**
  * 交换数组中两元素位置
@@ -8,6 +10,8 @@ Array.prototype.swap = function(i, j) {
   this[i] = this[j];
   this[j] = temp;
 }
+
+## 冒泡排序 
 
 /**
  * 冒泡排序
@@ -25,6 +29,8 @@ function bubbleSort(target) {
   return target;
 };
 
+## 选择排序 
+
 /**
  * 选择排序
  * @param       : <Array> target数组
@@ -41,4 +47,24 @@ function selectSort(target) {
   return target;
 };
 ```
+# 查找
 
+## 二分查找
+```bash
+function binarySearch(data, dest){
+    let h = data.length - 1,
+        l = 0;
+    while(l <= h){
+        var m = Math.floor((h + l) / 2);
+        if(data[m] == dest){
+            return m;
+        }
+        if(dest > data[m]){
+            l = m ++;
+        }else{
+            h = m --;
+        }
+    }
+    return false;
+}
+```
