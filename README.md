@@ -23,6 +23,7 @@
 
   * Nextjs Nuxtjs服务端渲染学习 50%
   * UI库编写
+  * Flutter学习
 
 ## blog内容
 
@@ -44,6 +45,7 @@
  
 ### Puppeteer学习
  * [PuppeteerAPI](https://github.com/yshysh123/blog/blob/master/puppeteer学习/puppeterAPI.md)
+ * [Puppeteer方法汇总](https://github.com/yshysh123/blog/blob/master/puppeteer%E5%AD%A6%E4%B9%A0/puppeteer.md)
 
 ### 配置文件汇总 
 
