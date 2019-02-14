@@ -23,10 +23,10 @@ Array.prototype.swap = function(i, j) {
  * @description : 冒泡排序，更贴切的形容应该是沉底排序，每一轮内循环就是最大数沉底了。
  */
 function bubbleSort(arr) {
-  for (var j = arr.length; j > 0; j--) {
-    for (var i = 0; i < j - 1; i++) {
-      if (arr[i] > arr[i + 1]) {
-        arr.swap(i, i + 1);
+  for (var i = 0; i < arr.length - 1; i++) {
+    for (var j = 0; j < arr.length - i - 1; j++) {
+      if (arr[j] > arr[j + 1]) {
+        arr.swap(j, j + 1);
       }
     }
   }
