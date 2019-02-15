@@ -176,3 +176,13 @@ window.addEventListener("scroll", _.throttle(lazyLoad, 16)); // 用到了lodash�
 - 服务端 -- ACK --> 客户端， CLOSE-WAIT
 - 服务端 -- ACK,FIN --> 客户端， LAST-ACK
 - 客户端 -- ACK --> 服务端，CLOSED
+
+## 执行上下文
+
+概念：
+
+- 单线程
+- 同步执行
+- 唯一的一个全局上下文
+- 函数的执行上下文的个数没有限制
+- 每次函数被调用创建新的执行上下文，包括调用自己。
