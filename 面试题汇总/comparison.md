@@ -135,3 +135,40 @@ bind(obj, 1, 2, 3);
 
 - call 和 apply：call 和 aplly 传入的第一个参数都是一样的，第二个参数，call 需要把参数按顺序传递进去，而 apply 则是把参数放在数组里。
 - call，apply 和 bind：call，apply 是在改变了上下文中的 this 指向后并立即执行函数。而 bind 知会改变上下文中的 this，不会立即执行函数
+
+```javascript
+Function.prototype.call = function(ctx, ...args) {
+  const context = ctx || global; // 获取上下文，call的第一个参数
+  const hash = new Date().getTime(); // 避免名字重复
+  context[hash] = this; // 将this缓存，this就是调用call方法的函数
+  const result = context[hash](...args); // 借助扩展运算符(...)运行函数
+  delete context[hash];
+  return result;
+};
+```
+
+```javascript
+Function.prototype.apply = function(ctx, arr) {
+  const context = ctx || global; // 获取上下文，call的第一个参数
+  const hash = new Date().getTime(); // 避免名字重复
+  context[hash] = this; // 将this缓存，this就是调用call方法的函数
+  const result = context[hash](...arr); // 借助扩展运算符(...)运行函数
+  delete context[hash];
+  return result;
+};
+```
+
+```javascript
+Function.prototype.bind = function(context, ...rest) {
+  if (typeof this !== "function") {
+    throw new TypeError("invalid invoked!");
+  }
+  const self = this;
+  return function F(...args) {
+    if (this instanceof F) {
+      return new self(...rest, ...args);
+    }
+    return self.apply(context, rest.concat(args));
+  };
+};
+```

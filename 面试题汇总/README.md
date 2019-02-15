@@ -74,16 +74,24 @@ JSON.parse(JSON.stringify(copyObj))
 ```
 
 ```bash
-function deepCopy( source ) {
-    let target = Array.isArray( source ) ? [] : {}
-    for ( var k in source ) {
-        if ( typeof source[ k ] === 'object' ) {
-            target[ k ] = deepCopy( source[ k ] )
-        } else {
-            target[ k ] = source[ k ]
-        }
+function deepClone(obj) {
+  if (Object.prototype.toString.call(obj) === '[object Function]') {
+    const str = obj.toString();
+    /^function\s*\w*\s*\(\s*\)\s*\{(.*)/.test(str);
+    const str1 = RegExp.$1.slice(0, -1);
+    return new Function(str1);
+  }
+  if (!obj || typeof obj !== 'object') return obj;
+  if (Object.prototype.toString.call(obj) === '[object Date]') return new Date(obj);
+  if (Object.prototype.toString.call(obj) === '[object RegExp]') return new RegExp(obj);
+  const cloneObj = Array.isArray(obj) ? [] : {};
+  for (const i in obj) {
+    if (obj.hasOwnProperty(i)) {
+      // 保证只遍历实例属性
+      cloneObj[i] = typeof obj[i] === 'object' ? deepClone(obj[i]) : obj[i];
     }
-    return target
+  }
+  return cloneObj;
 }
 ```
 
@@ -186,3 +194,16 @@ window.addEventListener("scroll", _.throttle(lazyLoad, 16)); // 用到了lodash�
 - 唯一的一个全局上下文
 - 函数的执行上下文的个数没有限制
 - 每次函数被调用创建新的执行上下文，包括调用自己。
+
+## 函数柯里化
+
+```javascript
+function curry(fn) {
+  const args = Array.prototype.slice.call(arguments, 1);
+  return function() {
+    const innerArgs = Array.prototype.slice.call(arguments);
+    const finalArgs = args.concat(innerArgs);
+    return fn.apply(null, finalArgs);
+  };
+}
+```
