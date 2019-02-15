@@ -71,6 +71,14 @@ const _.debounce = (func, wait) => {
 
 ### offset
 
+obj.offsetTop 指 obj 距离上方或上层控件的位置，整型，单位像素。
+
+obj.offsetLeft 指 obj 距离左方或上层控件的位置，整型，单位像素。
+
+obj.offsetWidth 指 obj 控件自身的宽度，整型，单位像素。
+
+obj.offsetHeight 指 obj 控件自身的高度，整型，单位像素。
+
 #### offsetWidth & offsetHeight
 
 任何 HTML 元素的只读属性 offsetWidth 和 offsetHeight 已 CSS 像素返回它的屏幕尺寸，返回的尺寸包干元素的边框和内边距（width/height + border + padding），和滚动条。
@@ -102,7 +110,17 @@ clientWidth 和 clientHeight 类似于 offsetWidth 和 offsetHeight，不同的�
 
 #### scrollLeft & scrollTop
 
-指定的是元素的滚动条的位置
+scrollLeft :
+
+对象的最左边到对象在当前窗口显示的范围内的左边的距离．
+
+即是在出现了横向滚动条的情况下，滚动条拉动的距离．
+
+scrollTop
+
+对象的最顶部到对象在当前窗口显示的范围内的顶边的距离．
+
+即是在出现了纵向滚动条的情况下，滚动条拉动的距离．
 
 scrollLeft 和 scrollTop 都是可写的属性，通过设置它们来让元素中的内容滚动。
 
