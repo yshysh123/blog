@@ -1,4 +1,4 @@
-# 主要列举出一些比较的题目
+# 主要列举出一些提问区别的题目
 
 ## http 和 https 区别
 
@@ -106,14 +106,14 @@ clientWidth 和 clientHeight 类似于 offsetWidth 和 offsetHeight，不同的�
 
 scrollLeft 和 scrollTop 都是可写的属性，通过设置它们来让元素中的内容滚动。
 
-### link 与 @import 的区别
+## link 与 @import 的区别
 
 - link 功能较多，可以定义 RSS，定义 Rel 等作用，而@import 只能用于加载 css
 - 当解析到 link 时，页面会同步加载所引的 css，而@import 所引用的 css 会等到页面加载完才被加载
 - @import 需要 IE5 以上才能使用
 - link 可以使用 js 动态引入，@import 不行
 
-### script defer 与 script async 的区别
+## script defer 与 script async 的区别
 
 - defer: 异步加载，元素解析完成后执行
 - async: 异步加载，与元素渲染并行执行
