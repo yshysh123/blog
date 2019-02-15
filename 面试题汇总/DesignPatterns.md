@@ -33,3 +33,70 @@ var Singleton = {
 单体模式在我们平时的应用中用的比较多的，相当于把我们的代码封装在一个起来，只是暴露一个入口，从而避免全部变量的污染。
 
 ## 单例模式
+
+```javascript
+/**
+ * 在执行当前 Single 只获得唯一一个对象
+ */
+var Single = (function(){
+    var instance;
+    function init() {
+        //define private methods and properties
+        //do something
+        return {
+            //define public methods and properties
+        };
+    }
+
+    return {
+        // 获取实例
+        getInstance:function(){
+            if(!instance){
+                instance = init();
+            }
+            return instance;
+        }
+    }
+})();
+var obj1 = Single.getInstance();
+var obj2 = Single.getInstance();
+
+console.log(obj1 === obj2);
+```
+
+## 构造函数模式
+
+```javascript
+/**
+ * 构造一个动物的函数 
+ */
+function Animal(name, color){
+    this.name = name;
+    this.color = color;
+    this.getName = function(){
+        return this.name;
+    }
+}
+// 实例一个对象
+var cat = new Animal('猫', '白色');
+console.log( cat.getName() );
+```
+
+## 工厂模式
+
+```javascript
+/**
+ * 工厂模式
+ */
+function Animal(opts){
+    var obj = new Object();
+    obj.name = opts.name;
+    obj.color = opts.color;
+    obj.getInfo = function(){
+        return '名称：'+obj.name +'， 颜色：'+ obj.color;
+    }
+    return obj;
+}
+var cat = Animal({name: '波斯猫', color: '白色'});
+cat.getInfo();
+```
