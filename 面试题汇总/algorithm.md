@@ -92,7 +92,9 @@ function quickSort(arr) {
   }
   var left = [],
     right = [],
-    current = arr.splice(0, 1);
+  var pivotIndex=Math.floor(arr.length/2);
+  //找基准，并把基准从原数组删除
+  var current=arr.splice(pivotIndex,1);
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] < current) {
       left.push(arr[i]); //放在左边
