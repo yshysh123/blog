@@ -1,6 +1,6 @@
 ##文字网格列表
 
-```bash
+```dart
 /**
   * GridView.count
   * padding 网格距离外部容器的位置

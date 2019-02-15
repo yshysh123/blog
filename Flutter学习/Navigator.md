@@ -1,6 +1,6 @@
 ## 导航的跳转和返回
 
-```bash
+```dart
 import 'package:flutter/material.dart';
 
 void main() {
@@ -22,7 +22,7 @@ class FirstScreen extends StatelessWidget {
           title: Text('导航页面1'),
         ),
         body: Center(
-          /**
+          /*
            * RaisedButton凸起按钮 2个参数
            * child 内容
            * onPressed 按下动作的响应事件
@@ -32,7 +32,7 @@ class FirstScreen extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                /**
+                /*
                  * MaterialPageRoute路由组件
                  * 下个页面直接builder
                  */
@@ -76,7 +76,7 @@ class SecondScreen extends StatelessWidget {
 
 ## 父页面向子页面传递参数
 
-```bash
+```dart
 import 'package:flutter/material.dart';
 
 /*
@@ -157,7 +157,7 @@ class ProdectDetail extends StatelessWidget {
 
 ## 子页面向父页面传递参数
 
-```bash
+```dart
 import 'package:flutter/material.dart';
 
 void main() {
@@ -240,4 +240,3 @@ class Product extends StatelessWidget {
 }
 
 ```
-

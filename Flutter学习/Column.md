@@ -1,9 +1,9 @@
-```bash
+```dart
 home: Scaffold(
   appBar: new AppBar(
     title: new Text('垂直布局'),
   ),
-  /**
+  /*
     * Column 垂直布局
     * mainAxisAlignment主轴对齐方式
     *  MainAxisAlignment.start 左对齐

@@ -1,6 +1,6 @@
 ## 纵向列表
 
-```bash
+```dart
 body: new ListView(
   children: <Widget>[
     new ListTile(
@@ -29,12 +29,12 @@ body: new ListView(
 
 ##横向列表拆分单独组件
 
-```bash
+```dart
 class MyListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      /**
+      /*
        * scrollDirection:
        * Axis.horizontal:横向滚动或者叫水平方向滚动。
        * Axis.vertical:纵向滚动或者叫垂直方向滚动。

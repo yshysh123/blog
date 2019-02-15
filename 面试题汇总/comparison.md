@@ -117,3 +117,21 @@ scrollLeft 和 scrollTop 都是可写的属性，通过设置它们来让元素�
 
 - defer: 异步加载，元素解析完成后执行
 - async: 异步加载，与元素渲染并行执行
+
+### bind apply call 的区别
+
+apply 和 call 基本类似，他们的区别只是传入的参数不同。
+
+```javascript
+//call的语法
+call(obj, 1, 2, 3);
+//apply的语法
+apply(obj, [1, 2, 3]);
+//bind的语法
+bind(obj, 1, 2, 3);
+```
+
+区别：
+
+- call 和 apply：call 和 aplly 传入的第一个参数都是一样的，第二个参数，call 需要把参数按顺序传递进去，而 apply 则是把参数放在数组里。
+- call，apply 和 bind：call，apply 是在改变了上下文中的 this 指向后并立即执行函数。而 bind 知会改变上下文中的 this，不会立即执行函数

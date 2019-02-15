@@ -1,4 +1,4 @@
-```bash
+```dart
 import "package:flutter/material.dart";
 
 void main() => runApp(MyApp(
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       title: 'Welcome to Flutter',
       home: Scaffold(
         appBar: AppBar(title: Text('Welcome to Flutter')),
-        /**
+        /*
          * new ListView.builder 动态列表
          * itemCount 数组长度
          * itemBuilder 渲染内容 context上下文 index 索引

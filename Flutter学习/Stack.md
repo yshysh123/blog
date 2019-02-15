@@ -1,4 +1,4 @@
-```bash
+```dart
 /**
   * FractionalOffset对齐xy 最小是0 最大是1.
   * 后组件在前组件之上展示
@@ -22,7 +22,7 @@ var stack = new Stack(
 );
 ```
 
-```bash
+```dart
 /**
   * FractionalOffset对齐xy 最小是0 最大是1.
   * 后组件在前组件之上展示
@@ -42,7 +42,7 @@ var stack = new Stack(
           new NetworkImage('http://img.bqatj.com/img/161c0d7595eb4947.jpg'),
       radius: 100.0,
     ),
-    /**
+    /*
       * Positioned
       * top:
       */

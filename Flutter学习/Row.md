@@ -1,7 +1,7 @@
-```bash
+```dart
 body: new Row(
   children: <Widget>[
-    /**
+    /*
       * 默认 不灵活水平布局
       * Expanded灵活水平布局
       * 可搭配使用
