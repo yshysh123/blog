@@ -188,7 +188,7 @@ window.addEventListener("scroll", _.throttle(lazyLoad, 16)); // 用到了lodash�
 ## 执行上下文
 
 概念：
-
+a
 - 单线程
 - 同步执行
 - 唯一的一个全局上下文
@@ -207,3 +207,8 @@ function curry(fn) {
   };
 }
 ```
+
+## 计算机网络的七层
+
+应用层、表示层、会话层、传输层、网络层、数据链路层、物理层
+

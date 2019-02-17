@@ -136,7 +136,7 @@ scrollLeft 和 scrollTop 都是可写的属性，通过设置它们来让元素�
 - defer: 异步加载，元素解析完成后执行
 - async: 异步加载，与元素渲染并行执行
 
-### bind apply call 的区别
+## bind apply call 的区别
 
 apply 和 call 基本类似，他们的区别只是传入的参数不同。
 
@@ -190,3 +190,8 @@ Function.prototype.bind = function(context, ...rest) {
   };
 };
 ```
+
+## TCP 和 UDP 的区别是什么
+
+- TCP：面向连接、传输可靠(保证数据正确性,保证数据顺序)、用于传输大量数据(流模式)、速度慢，建立连接需要开销较多(时间，系统资源)
+- UDP：面向非连接、传输不可靠、用于传输少量数据(数据包模式)、速度快

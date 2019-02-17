@@ -26,9 +26,7 @@ var Single = (function(){
             //define public methods and properties
         };
     }
-
     return {
-    
         // 获取实例
         getInstance:function(){
             if(!instance){
