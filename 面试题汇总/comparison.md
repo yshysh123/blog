@@ -71,6 +71,14 @@ const _.debounce = (func, wait) => {
 
 ### offset
 
+obj.offsetTop 指 obj 距离上方或上层控件的位置，整型，单位像素。
+
+obj.offsetLeft 指 obj 距离左方或上层控件的位置，整型，单位像素。
+
+obj.offsetWidth 指 obj 控件自身的宽度，整型，单位像素。
+
+obj.offsetHeight 指 obj 控件自身的高度，整型，单位像素。
+
 #### offsetWidth & offsetHeight
 
 任何 HTML 元素的只读属性 offsetWidth 和 offsetHeight 已 CSS 像素返回它的屏幕尺寸，返回的尺寸包干元素的边框和内边距（width/height + border + padding），和滚动条。
@@ -102,7 +110,17 @@ clientWidth 和 clientHeight 类似于 offsetWidth 和 offsetHeight，不同的�
 
 #### scrollLeft & scrollTop
 
-指定的是元素的滚动条的位置
+scrollLeft :
+
+对象的最左边到对象在当前窗口显示的范围内的左边的距离．
+
+即是在出现了横向滚动条的情况下，滚动条拉动的距离．
+
+scrollTop
+
+对象的最顶部到对象在当前窗口显示的范围内的顶边的距离．
+
+即是在出现了纵向滚动条的情况下，滚动条拉动的距离．
 
 scrollLeft 和 scrollTop 都是可写的属性，通过设置它们来让元素中的内容滚动。
 
@@ -118,7 +136,7 @@ scrollLeft 和 scrollTop 都是可写的属性，通过设置它们来让元素�
 - defer: 异步加载，元素解析完成后执行
 - async: 异步加载，与元素渲染并行执行
 
-### bind apply call 的区别
+## bind apply call 的区别
 
 apply 和 call 基本类似，他们的区别只是传入的参数不同。
 
@@ -257,3 +275,8 @@ let widthTraversal2 = node => {
   return nodes;
 };
 ```
+
+## TCP 和 UDP 的区别是什么
+
+- TCP：面向连接、传输可靠(保证数据正确性,保证数据顺序)、用于传输大量数据(流模式)、速度慢，建立连接需要开销较多(时间，系统资源)
+- UDP：面向非连接、传输不可靠、用于传输少量数据(数据包模式)、速度快
