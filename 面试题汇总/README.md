@@ -221,7 +221,7 @@ function curry(fn, currArgs) {
 ```javascript
 function _new(fn, ...arg) {
   var obj = Object.create(fn.prototype);
-  fn.call(obj, ...arg);
+  fn.apply(obj, ...arg);
   return obj;
 }
 ```
