@@ -280,3 +280,70 @@ let widthTraversal2 = node => {
 
 - TCP：面向连接、传输可靠(保证数据正确性,保证数据顺序)、用于传输大量数据(流模式)、速度慢，建立连接需要开销较多(时间，系统资源)
 - UDP：面向非连接、传输不可靠、用于传输少量数据(数据包模式)、速度快
+
+## Object.defineProperty 和 Proxy 的区别，缺陷，Proxy 的优势，以及简易实现 2 种数据劫持方法
+
+### Object.defineProperty
+
+简易实现
+
+```javascript
+const obj = {};
+Object.defineProperty(obj, 'text', {
+  get: function() {
+    console.log('get val');&emsp;
+  },
+  set: function(newVal) {
+    console.log('set val:' + newVal);
+    document.getElementById('input').value = newVal;
+    document.getElementById('span').innerHTML = newVal;
+  }
+});
+const input = document.getElementById('input');
+input.addEventListener('keyup', function(e){
+  obj.text = e.target.value;
+})
+```
+
+缺陷
+
+- 无法监听数组变化
+- 只能劫持对象的属性,因此我们需要对每个对象的每个属性进行遍历
+
+### Proxy
+
+```javascript
+const input = document.getElementById("input");
+const p = document.getElementById("p");
+const obj = {};
+
+const newObj = new Proxy(obj, {
+  get: function(target, key, receiver) {
+    console.log(`getting ${key}!`);
+    return Reflect.get(target, key, receiver);
+  },
+  set: function(target, key, value, receiver) {
+    console.log(target, key, value, receiver);
+    if (key === "text") {
+      input.value = value;
+      p.innerHTML = value;
+    }
+    return Reflect.set(target, key, value, receiver);
+  }
+});
+
+input.addEventListener("keyup", function(e) {
+  newObj.text = e.target.value;
+});
+```
+
+优势
+
+- Proxy 可以直接监听数组的变化
+- Proxy 有多达 13 种拦截方法,不限于 apply、ownKeys、deleteProperty、has 等等是 Object.defineProperty 不具备的。
+- Proxy 返回的是一个新对象,我们可以只操作新的对象达到目的,而 Object.defineProperty 只能遍历对象属性直接修改。
+- Proxy 作为新标准将受到浏览器厂商重点持续的性能优化，也就是传说中的新标准的性能红利。
+
+劣势
+
+- 兼容性
