@@ -198,12 +198,29 @@ window.addEventListener("scroll", _.throttle(lazyLoad, 16)); // 用到了lodash�
 ## 函数柯里化
 
 ```javascript
-function curry(fn) {
-  const args = Array.prototype.slice.call(arguments, 1);
+function curry(fn, currArgs) {
   return function() {
-    const innerArgs = Array.prototype.slice.call(arguments);
-    const finalArgs = args.concat(innerArgs);
-    return fn.apply(null, finalArgs);
+    let args = [].slice.call(arguments);
+    // 首次调用时，若未提供最后一个参数currArgs，则不用进行args的拼接
+    if (currArgs !== undefined) {
+      args = args.concat(currArgs);
+    }
+    // 递归调用
+    if (args.length < fn.length) {
+      return curry(fn, args);
+    }
+    // 递归出口
+    return fn.apply(null, args);
   };
+}
+```
+
+## 实现一个 new 函数
+
+```javascript
+function _new(fn, ...arg) {
+  var obj = Object.create(fn.prototype);
+  fn.call(obj, ...arg);
+  return obj;
 }
 ```

@@ -1,0 +1,80 @@
+{
+  //https://www.tslang.cn/docs/handbook/compiler-options.html
+  "compilerOptions": {
+    /*
+     *指定ECMAScript目标版本 "ES3"（默认）， "ES5"， "ES6"/ "ES2015"， "ES2016"， "ES2017"或 "ESNext"。
+     */
+    "target": "es5",
+    /**
+      注意：如果--lib没有指定默认注入的库的列表。默认注入的库为： 
+      ► 针对于--target ES5：DOM，ES5，ScriptHost 
+      ► 针对于--target ES6：DOM，ES6，DOM.Iterable，ScriptHost
+    */
+    "lib": ["dom", "dom.iterable", "esnext"],
+    //允许编译javascript文件。默认值false
+    "allowJs": true,
+    //启用实验性的ES装饰器。默认值false
+    "experimentalDecorators": true,
+    //忽略所有的声明文件（ *.d.ts）的类型检查。默认值false
+    "skipLibCheck": true,
+    //CommonJS 模块必须被以 default import 形式导入。默认值false
+    "esModuleInterop": true,
+    //允许从没有设置默认导出的模块中默认导入。这并不影响代码的输出，仅为了类型检查。
+    "allowSyntheticDefaultImports": true,
+    /**
+    启用所有严格类型检查选项。 
+    启用 --strict相当于启用 
+      --noImplicitAny：在表达式和声明上有隐含的 any类型时报错。
+      --noImplicitThis：当 this表达式的值为 any类型的时候，生成一个错误。
+      --alwaysStrict：以严格模式解析所有代码
+      --strictNullChecks：在严格的 null检查模式下， null和 undefined值不包含在任何类型里，只允许用它们自己和 any来赋值
+      --strictFunctionTypes：禁用函数参数双向协变检查。
+      --strictPropertyInitialization：确保类的非undefined属性已经在构造函数里初始化。
+    */
+    "strict": true,
+    //禁止对同一个文件的不一致的引用。默认false
+    "forceConsistentCasingInFileNames": true,
+    /**
+    *指定生成哪个模块系统代码： "None"， "CommonJS"， "AMD"， "System"， "UMD"， "ES6"或 "ES2015"。 
+    ► 只有 "AMD"和 "System"能和 --outFile一起使用。 
+    ► "ES6"和 "ES2015"可使用在目标输出为 "ES5"或更低的情况下。
+    */
+    "module": "commonjs",
+    /**
+     *决定如何处理模块。或者是"Node"对于Node.js/io.js，或者是"Classic"（默认）。
+     */
+    "moduleResolution": "node",
+    //typecript如何处理导入json文件
+    "resolveJsonModule": true,
+    //不生成输出文件。 默认false
+    "noEmit": false,
+    //在 .tsx文件里支持JSX： "React"或 "Preserve"
+    "jsx": "react",
+    //解析非相对模块名的基准目录
+    "baseUrl": ".",
+    //若有未使用的局部变量则抛错。默认false
+    "noUnusedLocals": true,
+    //要包含的类型声明文件路径列表。
+    "typeRoots": ["node_modules/@types", "typings"],
+    /**
+    确保类的非undefined属性已经在构造函数里初始化。
+    若要令此选项生效，需要同时启用--strictNullChecks。
+    */
+    "strictPropertyInitialization": false,
+    //模块名到基于 baseUrl的路径映射的列表。
+    "paths": {
+      "tool/*": ["src/tool/*"],
+      "component/*": ["src/component/*"],
+      "locale/*": ["src/locale/*"],
+      "page/*": ["src/page/*"],
+      "store/*": ["src/store/*"],
+      "storeProp/*": ["src/storeProp/*"],
+      "style/*": ["src/style/*"],
+      "mixin/*": ["src/mixin/*"],
+      "src/*": ["src/*"],
+      "fixture/*": ["__test__/fixture/*"]
+    }
+  },
+  //包含的文件夹
+  "include": ["src", "__test__"]
+}

@@ -172,3 +172,88 @@ Function.prototype.bind = function(context, ...rest) {
   };
 };
 ```
+
+## Set、Map、WeakSet 和 WeakMap 区别
+
+- Set
+
+  - 成员唯一、无序且不重复
+  - [value, value]，键值与键名是一致的（或者说只有键值，没有键名）
+  - 可以遍历，方法有：add、delete、has
+
+- WeakSet
+
+  - 成员都是对象
+  - 成员都是弱引用，可以被垃圾回收机制回收，可以用来保存 DOM 节点，不容易造成内存泄漏
+  - 不能遍历，方法有 add、delete、has
+
+- Map
+
+  - 本质上是键值对的集合，类似集合
+  - 可以遍历，方法很多可以跟各种数据格式转换
+
+- WeakMap
+
+  - 只接受对象最为键名（null 除外），不接受其他类型的值作为键名
+  - 键名是弱引用，键值可以是任意的，键名所指向的对象可以被垃圾回收，此时键名是无效的
+  - 不能遍历，方法有 get、set、has、delete
+
+## 深度优先遍历和广度优先遍历
+
+- 深度优先遍历
+
+步骤：
+
+- 访问顶点 v
+- 依次从 v 的未被访问的邻接点出发，对图进行深度优先遍历；直至图中和 v 有路径相通的顶点都被访问
+- 若此时途中尚有顶点未被访问，则从一个未被访问的顶点出发，重新进行深度优先遍历，直到所有顶点均被访问过为止
+
+```javascript
+let deepTraversal2 = node => {
+  let nodes = [];
+  if (node !== null) {
+    nodes.push(node);
+    let children = node.children;
+    for (let i = 0; i < children.length; i++) {
+      nodes = nodes.concat(deepTraversal2(children[i]));
+    }
+  }
+  return nodes;
+};
+```
+
+- 广度优先遍历
+
+步骤：
+
+- 创建一个队列，并将开始节点放入队列中
+- 若队列非空，则从队列中取出第一个节点，并检测它是否为目标节点
+
+  - 若是目标节点，则结束搜寻，并返回结果
+  - 若不是，则将它所有没有被检测过的字节点都加入队列中
+
+- 若队列为空，表示图中并没有目标节点，则结束遍历
+
+```javascript
+let widthTraversal2 = node => {
+  let nodes = [];
+  let stack = [];
+  if (node) {
+    stack.push(node);
+    while (stack.length) {
+      let item = stack.shift();
+      let children = item.children;
+      nodes.push(item);
+      // 队列，先进先出
+      // nodes = [] stack = [parent]
+      // nodes = [parent] stack = [child1,child2,child3]
+      // nodes = [parent, child1] stack = [child2,child3,child1-1,child1-2]
+      // nodes = [parent,child1,child2]
+      for (let i = 0; i < children.length; i++) {
+        stack.push(children[i]);
+      }
+    }
+  }
+  return nodes;
+};
+```
