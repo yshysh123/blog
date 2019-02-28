@@ -17,6 +17,7 @@ server {
 	listen 80 default_server;
   server_name _;
 
+  gzip_static                     on;
   gzip                            on;
   gzip_min_length                 100;
   gzip_buffers                    4 16k;
