@@ -140,3 +140,26 @@ function cStairs(n) {
 }
 ```
 
+## 洗牌算法
+```javascript
+/**
+洗牌算法
+场景：随机产生100个数字，数字范围1-100，并且它们不重复。
+*/
+//No1
+function shuffle2(arr){//时间复杂度O(nlogn)
+    arr.sort(()=>Math.random() - 0.5);
+}
+//No2
+function shuffle(arr){//时间复杂度O(n)
+    arr = arr.concat();
+    let temp = null;
+    let r = Math.random()*arr.length|0;
+    for(let i=0;i<arr.length;i++){
+        temp = arr[i];
+        arr[i] = arr[r];
+        arr[r] = temp;
+    }
+    return arr;
+}
+```
