@@ -136,3 +136,21 @@ server{
 - gzip_http_version：识别 HTTP 协议版本，其值可以是 1.1.或 1.0.
 - gzip_proxied : 用于设置启用或禁用从代理服务器上收到相应内容 gzip 压缩。
 - gzip_vary : 用于在响应消息头中添加 Vary：Accept-Encoding,使代理服务器根据请求头中的 Accept-Encoding 识别是否启用 gzip 压缩。
+
+## nginx 全局变量
+
+|      变量名       |                              功能                               |
+| :---------------: | :-------------------------------------------------------------: |
+|      \$host       | 请求信息中的 Host，如果请求中没有 Host 行，则等于设置的服务器名 |
+| \$request_method  |                  客户端请求类型，如 GET、POST                   |
+|   \$remote_addr   |                        客户端的 IP 地址                         |
+|      \$args       |                          请求中的参数                           |
+| \$content_length  |                 请求头中的 Content-length 字段                  |
+| \$http_user_agent |                        客户端 agent 信息                        |
+|   \$http_cookie   |                       客户端 cookie 信息                        |
+|   \$remote_addr   |                        客户端的 IP 地址                         |
+|   \$remote_port   |                          客户端的端口                           |
+| \$server_protocol |             请求使用的协议，如 HTTP/1.0、·HTTP/1.1`             |
+|   \$server_addr   |                           服务器地址                            |
+|   \$server_name   |                           服务器名称                            |
+|   \$server_port   |                         服务器的端口号                          |

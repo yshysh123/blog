@@ -348,11 +348,17 @@ input.addEventListener("keyup", function(e) {
 
 - 兼容性
 
-## webpack 中3种hash的区别
+## webpack 中 3 种 hash 的区别
 
-- hash 
-如果都使用hash的话，因为这是工程级别的，即每次修改任何一个文件，所有文件名的hash至都将改变。所以一旦修改了任何一个文件，整个项目的文件缓存都将失效
-- chunkhash 
-chunkhash根据不同的入口文件(Entry)进行依赖文件解析、构建对应的chunk，生成对应的哈希值。在生产环境里把一些公共库和程序入口文件区分开，单独打包构建，接着我们采用chunkhash的方式生成哈希值，那么只要我们不改动公共库的代码，就可以保证其哈希值不会受影响.但是这样又有一个问题，因为我们是将样式作为模块import到JavaScript文件中的，所以它们的chunkhash是一致的
+- hash
+  如果都使用 hash 的话，因为这是工程级别的，即每次修改任何一个文件，所有文件名的 hash 至都将改变。所以一旦修改了任何一个文件，整个项目的文件缓存都将失效
+- chunkhash
+  chunkhash 根据不同的入口文件(Entry)进行依赖文件解析、构建对应的 chunk，生成对应的哈希值。在生产环境里把一些公共库和程序入口文件区分开，单独打包构建，接着我们采用 chunkhash 的方式生成哈希值，那么只要我们不改动公共库的代码，就可以保证其哈希值不会受影响.但是这样又有一个问题，因为我们是将样式作为模块 import 到 JavaScript 文件中的，所以它们的 chunkhash 是一致的
 - contenthash
-contenthash是针对文件内容级别的，只有你自己模块的内容变了，那么hash值才改变，所以我们可以通过contenthash解决上诉问题。
+  contenthash 是针对文件内容级别的，只有你自己模块的内容变了，那么 hash 值才改变，所以我们可以通过 contenthash 解决上诉问题。
+
+## setTimeout 或 setInterval 间隔 16ms 和 requestAnimationFrame 有什么区别？？
+
+假设使用 setTimeout 或 setInterval 来触发 JS 执行并修改样式从而导致视觉变化；那么会有这样一种情况，因为 setTimeout 或 setInterval 没有办法保证回调函数什么时候执行，它可能在每一帧的中间执行，也可能在每一帧的最后执行。所以会导致即便我们能保障每一帧的总耗时小于 16ms，但是执行的时机如果在每一帧的中间或最后，最后的结果依然是没有办法每隔 16ms 让屏幕产生一次变化。
+
+也就是说，即便我们能保证每一帧总体时间小于 16ms，但如果使用定时器触发动画，那么由于定时器的触发时机不确定，所以还是会导致动画丢帧。现在整个 Web 只有一个 API 可以解决这个问题，那就是 requestAnimationFrame，它可以保证回调函数稳定的在每一帧最开始触发。
