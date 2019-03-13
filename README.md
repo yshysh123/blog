@@ -52,7 +52,7 @@
  * [babel相关](https://github.com/yshysh123/blog/blob/master/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%B1%87%E6%80%BB/babel%E7%9B%B8%E5%85%B3.md)
  * [nginx反向代理](https://github.com/yshysh123/blog/blob/master/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%B1%87%E6%80%BB/nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86.md)
  * [nginx命令](https://github.com/yshysh123/blog/blob/master/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%B1%87%E6%80%BB/nginx%E5%91%BD%E4%BB%A4.md)
- * [nginx常用配置](https://github.com/yshysh123/blog/blob/master/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%B1%87%E6%80%BB/nginx%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE)
+ * [nginx常用配置](https://github.com/yshysh123/blog/blob/master/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%B1%87%E6%80%BB/nginx%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE.md)
  * [nginx负载均衡](https://github.com/yshysh123/blog/blob/master/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%B1%87%E6%80%BB/nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1.md)
  * [webpack4.0配置](https://github.com/yshysh123/blog/blob/master/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%B1%87%E6%80%BB/webpack4.0%E9%85%8D%E7%BD%AE.md)
  * [webpack常用配置](https://github.com/yshysh123/blog/blob/master/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%B1%87%E6%80%BB/webpack%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE)
