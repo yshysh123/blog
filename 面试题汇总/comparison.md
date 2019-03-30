@@ -155,25 +155,34 @@ bind(obj, 1, 2, 3);
 - call，apply 和 bind：call，apply 是在改变了上下文中的 this 指向后并立即执行函数。而 bind 知会改变上下文中的 this，不会立即执行函数
 
 ```javascript
-Function.prototype.call = function(ctx, ...args) {
-  const context = ctx || global; // 获取上下文，call的第一个参数
-  const hash = new Date().getTime(); // 避免名字重复
-  context[hash] = this; // 将this缓存，this就是调用call方法的函数
-  const result = context[hash](...args); // 借助扩展运算符(...)运行函数
-  delete context[hash];
-  return result;
-};
+Function.prototype.myCall = function(context = window) {
+  if (typeof this !== 'function') {
+    throw new TypeError('Error')
+  }
+  context.fn = this
+  const args = [...arguments].slice(1)
+  const result = context.fn(...args)
+  delete context.fn
+  return result
+}
 ```
 
 ```javascript
-Function.prototype.apply = function(ctx, arr) {
-  const context = ctx || global; // 获取上下文，call的第一个参数
-  const hash = new Date().getTime(); // 避免名字重复
-  context[hash] = this; // 将this缓存，this就是调用call方法的函数
-  const result = context[hash](...arr); // 借助扩展运算符(...)运行函数
-  delete context[hash];
-  return result;
-};
+Function.prototype.myApply = function(context = window) {
+  if (typeof this !== 'function') {
+    throw new TypeError('Error')
+  }
+  context.fn = this
+  let result
+  // 处理参数和 call 有区别
+  if (arguments[1]) {
+    result = context.fn(...arguments[1])
+  } else {
+    result = context.fn()
+  }
+  delete context.fn
+  return result
+}
 ```
 
 ```javascript
