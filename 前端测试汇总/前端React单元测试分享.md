@@ -36,7 +36,7 @@ nodejs 是一门更新很快的语言，我们常常要维护老项目，老项�
 此处推荐使用编程语言版本切换工具 🍀，nodejs 的就是[nvm](https://github.com/creationix/nvm)，
 全称 Node Version Manager，官网有多系统安装方式。
 
-## 第一部分: 函数式单元测试
+## 单元测试工具
 
 说起单元测试，市面上的单元测试工具形形色色，五花八门。最常使用的工具为:Jest Mocha Jasmine
 
@@ -96,7 +96,7 @@ nodejs 是一门更新很快的语言，我们常常要维护老项目，老项�
 
 Enzyme
 
-Enzyme 是 Airbnb 开源的 React 测试工具库库，它功能过对官方的测试工具库 ReactTestUtils 的二次封装，提供了一套简洁强大的 API，并内置 Cheerio，
+Enzyme 是 Airbnb 开源的 React 测试工具库库，它功能过对官方的测试工具库 ReactTestUtils 的二次封装，提供了一套简洁强大的 API。
 实现了 jQuery 风格的方式进行 DOM 处理，开发体验十分友好。在开源社区有超高人气，同时也获得了 React 官方的推荐。
 
 三种渲染方法
@@ -112,75 +112,108 @@ Enzyme 是 Airbnb 开源的 React 测试工具库库，它功能过对官方的�
 3. 页面单元测试
 4. E2E 测试
 
-### 函数式单元测试
+## 函数式单元测试
 
-#### 测试前须知
+### 测试前须知
 
 1. 使用 Jest 进行单元测试必须保证函数式纯函数。即函数有入参并以 return 结尾。
 2. 函数尽量不要依赖外部变量。
-3. react 函数（返回值为 JSX）不输入该测试范围
-4. jest 配置：在根目录下创建 jest.config.js 具体配置见 jest.config.js
+3. react 函数（返回值为 JSX）不属于该测试范围
+4. jest 配置：在根目录下创建 jest.config.js。
 
-#### 测试步骤
+### 测试步骤
 
 1. 写一个纯函数
 
-```bash
-  export default function(a){
-    return a+2
+```javascript
+  import moment from 'moment'
+  type TDate = string | moment.Moment
+  const convert = (date: TDate): moment.Moment => {
+    if (typeof date === 'string') {
+      return moment(date)
+    }
+    return date
   }
+  export default {
+    uponDay: (date: TDate) => date && convert(date).format('YYYY-MM-DD'),
+    uponSeconds: (date: TDate) =>
+      date && convert(date).format('YYYY-MM-DD HH:mm:ss'),
+
 ```
 
 2. 在**test**文件夹下建一个文件 fn.test.js
 
 3. 进行单元测试
 
-```bash
-import fn from 'util/fn'
-describe('util/fn', () => {
-  it('测试fn方法', () => {
-    expect(fn(2)).toBe(4)
-    expect(fn(3)).not.toBe(4)
+```javascript
+import dateFormater from 'tool/dateFormater'
+import moment from 'moment'
+
+const { uponDay, uponSeconds } = dateFormater
+
+describe('测试dateFormater', () => {
+  it('测试格式化到天，无时分秒', () => {
+    expect(uponDay(moment('2018-09-20'))).toBe('2018-09-20')
+  })
+
+  it('测试格式化到天，无时分秒，日期为字符串类型', () => {
+    expect(uponDay('2018-09-20')).toBe('2018-09-20')
+  })
+
+  it('测试格式化到天，带时分秒', () => {
+    expect(uponDay(moment('2018-09-20 08:08:00'))).toBe('2018-09-20')
+  })
+
+  it('测试格式化到秒', () => {
+    expect(uponSeconds(moment('2018-09-26T16:45:36.000+0000'))).toBe(
+      '2018-09-27 00:45:36',
+    )
+  })
+
+  it('测试格式化到秒，日期为字符串类型', () => {
+    expect(uponSeconds('2018-09-26T16:45:36.000+0000')).toBe(
+      '2018-09-27 00:45:36',
+    )
   })
 })
 ```
 
-### 组件单元测试
+## 组件单元测试
 
-#### 测试前须知
+### 测试前须知
 
 1. 使用 Jest 进行组件测试需要模拟浏览器环境，目前与 react 配合较好的是 enzyme 及 jsdom。
 2. 一个测试用例只做一件事，所以尽可能将组件拆分为最小单元。
 3. 模拟数据及接口使用 fetch-mock
 4. 在测试之前执行 steup 函数将所有环境模拟好，在测试中直接使用即可
 
-##### 测试组件内容
+### 测试组件内容
 
 React 组件分为四种：
 
 1. 展示型业务组件
 2. 容器型业务组件
 3. 通用 UI 组件
-4. 功能型组件
+4. 业务、功能型组件
 
-测试的重点主要放在功能性组件
+测试的重点主要放在业务、功能型组件
 
-功能性组件必须测试的三部分：
+业务、功能型组件必须测试的三部分：
 
 1. Props 传入；
 2. 组件分支渲染逻辑；
 3. 事件调用和参数传递。
 
-#### 测试步骤
+### 测试步骤
 
 就拿一个简单的权限高阶组件做例子：
 
 ```javascript
-import React from "react";
-import { Provider } from "mobx-react";
-import { mount } from "enzyme";
-import Permission from "component/Permission";
-import permissionStore from "store/permission";
+import React from 'react'
+import { Provider } from 'mobx-react'
+import { mount } from 'enzyme'
+import Permission from 'component/Permission'
+import permissionStore from 'store/permission'
 
 const TestPermission = () => (
   <Provider store={{ permissionStore }}>
@@ -188,59 +221,59 @@ const TestPermission = () => (
       <span>hasPermission</span>
     </Permission>
   </Provider>
-);
+)
 
-describe("component/Permission", () => {
-  it("测试无权限", () => {
-    const app = mount(<TestPermission />);
-    expect(permissionStore.has("ok")).toBe(false);
-    expect(app.text()).toBe(null);
-  });
+describe('component/Permission', () => {
+  it('测试无权限', () => {
+    const app = mount(<TestPermission />)
+    expect(permissionStore.has('ok')).toBe(false)
+    expect(app.text()).toBe(null)
+  })
 
-  it("测试有权限", () => {
-    permissionStore.data.add("ok");
-    const app = mount(<TestPermission />);
-    expect(permissionStore.has("ok")).toBe(true);
-    expect(app.text()).toBe("hasPermission");
-  });
-});
+  it('测试有权限', () => {
+    permissionStore.data.add('ok')
+    const app = mount(<TestPermission />)
+    expect(permissionStore.has('ok')).toBe(true)
+    expect(app.text()).toBe('hasPermission')
+  })
+})
 ```
 
-### 页面级别单元测试
+## 页面级别单元测试
 
 通常页面级别的单元测试是不需要前端来做的。页面通常被分割成多个公用的组件及 Store（MVVM 下），数据与表现分离，即数据层和通用组件层我们已经通过上述 2 种方式进行过相应的单元测试了。页面级别的测试通常只针对简单的文案及 CSS 进行测试就够了。
 
 例如我们可以对一个页面的跟组件进行测试：
 
 ```javascript
-import React from "react";
-import { shallow } from "enzyme";
-import { Card } from "antd";
-import A from "page/A";
-import Operation from "page/A/Operation";
-import List from "page/A/List";
-import Search from "page/A/Search";
-import CardTitle from "component/CardTitle";
+import React from 'react'
+import { shallow } from 'enzyme'
+import { Card } from 'antd'
+import A from 'page/A'
+import Operation from 'page/A/Operation'
+import List from 'page/A/List'
+import Search from 'page/A/Search'
+import CardTitle from 'component/CardTitle'
 
-describe("page/A", () => {
-  it("测试页面可完整渲染", () => {
-    const app = shallow(<A />);
-    expect(app.find(Card)).toHaveLength(1);
-    expect(app.contains(<Operation />)).toBeTruthy();
-    expect(app.contains(<List />)).toBeTruthy();
+describe('page/A', () => {
+  it('测试页面可完整渲染', () => {
+    const app = shallow(<A />)
+    expect(app.find(Card)).toHaveLength(1)
+    expect(app.contains(<Operation />)).toBeTruthy()
+    expect(app.contains(<List />)).toBeTruthy()
 
     // 测试可完整渲染Card title属性
-    const title = app.find(Card).prop("title");
-    expect(title.type).toEqual(CardTitle);
-    expect(title.props.children.type).toEqual(Search);
+    const title = app.find(Card).prop('title')
+    expect(title.type).toEqual(CardTitle)
+    expect(title.props.children.type).toEqual(Search)
 
-    const app2 = shallow(<A showOperation={false} />);
-    expect(app2.contains(<Operation />)).toBeFalsy();
-  });
-});
+    const app2 = shallow(<A showOperation={false} />)
+    expect(app2.contains(<Operation />)).toBeFalsy()
+  })
+})
 ```
 
-### E2E 单元测试
+## E2E 单元测试
 
 问题？？如何确定用户可以顺利走完一个购买流程呢?
 
@@ -263,9 +296,171 @@ describe("page/A", () => {
 - Cypress
 - Jest puppeteer
 
-#### 测试前须知
+### 测试前须知
 
 1. 通常 E2E 测试是我们正常开发已经完成，最好有完整的测试环境（开发、生产）。
 2. E2E 测试需要我们队整个业务逻辑非常熟练，即多页面之间的交互甚至整个项目流程。
 
 下面介绍我主要使用的 2 种 E2E 测试工具 Nightwatch 及 Jest puppeteer
+
+Nightwatch
+
+```javascript
+module.exports = {
+  'test notFound page': browser => {
+    browser
+      .url('http://localhost:8080/xxxx')
+      .maximizeWindow()
+      .useXpath()
+      .assert.containsText('//*[@id="app"]/div[3]/div[2]/h1', '404')
+      .assert.containsText(
+        '//*[@id="app"]/div[3]/div[2]/h2',
+        '抱歉，您访问的页面不存在',
+      )
+      .pause(1000)
+      .assert.urlContains('http://localhost:8080/xxxx')
+      .click('//*[@id="app"]/div[3]/div[2]/div/button')
+      .pause(1000)
+      .assert.urlContains('http://localhost:8080/Home')
+      .end()
+  },
+}
+```
+
+Jest puppeteer
+
+```javascript
+describe('goto page', () => {
+  beforeAll(async () => {
+    // page = await browser.newPage()
+    await page.setViewport({
+      width: 1920,
+      height: 1080,
+    })
+  })
+
+  it('go to user page', async () => {
+    await page.goto(`${pageUrl}/user`)
+    await page.waitForSelector('label[for="account"]')
+    await page.waitForSelector('label[for="name"]')
+    await page.waitForSelector('label[for="mail"]')
+    await page.waitForSelector('label[for="mobile"]')
+  })
+
+  it('coverage', async () => {
+    await Promise.all([
+      page.coverage.startJSCoverage(),
+      page.coverage.startCSSCoverage(),
+    ])
+    await page.goto(pageUrl)
+    await page.hover('.ant-menu-root')
+    await page.click('.ant-menu-item a[href="/user"]')
+    // await jestPuppeteer.debug()
+    const [jsCoverage, cssCoverage] = await Promise.all([
+      page.coverage.stopJSCoverage(),
+      page.coverage.stopCSSCoverage(),
+    ])
+    const coverage = [...jsCoverage, ...cssCoverage]
+    let totalBytes = 0
+    let usedBytes = 0
+    coverage.forEach(entry => {
+      totalBytes += entry.text.length
+      entry.ranges.forEach(range => {
+        usedBytes += range.end - range.start - 1
+      })
+    })
+    log(`Bytes used: ${(usedBytes / totalBytes) * 100}%`)
+  })
+})
+```
+
+## 单元测试常用配置
+
+```javascript
+{
+  //覆盖率统计文件夹及文件
+  "collectCoverageFrom": [
+    "src/component/**/*.{js,jsx,mjs}",
+    "src/page/**/*.{js,jsx,mjs}",
+    "src/store/**/*.{js,jsx,mjs}",
+    "src/storeProp/**/*.{js,jsx,mjs}",
+    "src/mixin/**/*.{js,jsx,mjs}",
+    "src/tool/**/*.{js,jsx,mjs}"
+  ],
+  //入口文件
+  "setupFiles": [
+    "<rootDir>/jest/setup.js"
+  ],
+  //测试代码文件
+  "testMatch": [
+    "<rootDir>/__test__/**/?(*.)(spec|test).{js,jsx,ts,tsx}"
+  ],
+  //测试Setup之后执行的文件
+  "setupTestFrameworkScriptFile": "<rootDir>/jest/afterSetup.js",
+  //生成dom所需的库
+  "testEnvironment": "enzyme",
+  //测试Url
+  "testURL": "http://localhost",
+  //转换 ES6->5 ts 及 css 文件
+  "transform": {
+    "^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-7-jest",
+    "^.+\\.tsx?$": "ts-jest",
+    "^.+\\.(css|less)$": "<rootDir>/jest/cssTransform.js"
+  },
+  //不转换的文件
+  "transformIgnorePatterns": [
+    "<rootDir>/node_modules/(?!lodash-es/).+(js|jsx|mjs)$"
+  ],
+  //别名，类似于alias
+  "moduleNameMapper": {
+    "^component/(.+)$": "<rootDir>/src/component/$1",
+    "^tool/(.+)$": "<rootDir>/src/tool/$1",
+    "^store/(.+)$": "<rootDir>/src/store/$1",
+    "^page/(.+)$": "<rootDir>/src/page/$1",
+    "^mixin/(.+)$": "<rootDir>/src/mixin/$1",
+    "^storeProp/(.+)$": "<rootDir>/src/storeProp/$1",
+    "^src/(.+)$": "<rootDir>/src/$1",
+    "^locale/(.+)$": "<rootDir>/src/locale/$1",
+    "^fixture/(.+)$": "<rootDir>/__test__/fixture/$1",
+    "history/createBrowserHistory": "<rootDir>/node_modules/history/createMemoryHistory",
+    "^.+\\.less$": "identity-obj-proxy"
+  },
+  //后缀，类似于extensions
+  "moduleFileExtensions": [
+    "js",
+    "json",
+    "jsx",
+    "ts",
+    "tsx"
+  ],
+  //测试完毕后清除mocks
+  "clearMocks": true,
+  //Resets Mocks
+  "restoreMocks": true
+},
+```
+
+## 覆盖率
+
+在如上 jest 配置之后，录入需要统计覆盖率的文件，即可统计单元测试的覆盖率。
+
+对应的覆盖率统计命令如下：
+
+```javascript
+//vue
+"coverage": "yarn run test:unit --coverage && node jest/openCoverage.js"
+//react
+"coverage": "npx jest --coverage && node jest/openCoverage.js"
+```
+
+## 集成测试
+
+集成测试需要一些第三方工具所配合，例如：gitlab 钩子，github 钩子，docker 等等
+
+例如我们可以在项目提交代码的之前进行单元测试
+
+```javascript
+"gitHooks": {
+  "pre-commit": "npx jest"
+}
+```
