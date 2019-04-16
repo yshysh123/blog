@@ -15,15 +15,15 @@
 
 ### 测试类型
 
-- 单元测试：指的是以原件的单元为单位，对软件进行测试。单元可以是一个函数，也可以是一个模块或一个组件，基本特征就是只要输入不变，必定返回同样的输出。一个软件越容易写单元测试，就表明它的模块化结构越好，给模块之间的耦合越弱。React 的组件化和函数式编程，天生适合进行单元测试
-- 功能测试：相当于是黑盒测试，测试者不了解程序的内部情况，不需要具备编程语言的专门知识，只知道程序的输入、输出和功能，从用户的角度针对软件界面、功能和外部结构进行测试，不考虑内部的逻辑
-- 集成测试：在单元测试的基础上，将所有模块按照设计要求组装成子系统或者系统，进行测试
-- 冒烟测试：在正式全面的测试之前，对主要功能进行的测试，确认主要功能是否满足需要，软件是否能正常运行
+-   单元测试：指的是以原件的单元为单位，对软件进行测试。单元可以是一个函数，也可以是一个模块或一个组件，基本特征就是只要输入不变，必定返回同样的输出。一个软件越容易写单元测试，就表明它的模块化结构越好，给模块之间的耦合越弱。React 的组件化和函数式编程，天生适合进行单元测试
+-   功能测试：相当于是黑盒测试，测试者不了解程序的内部情况，不需要具备编程语言的专门知识，只知道程序的输入、输出和功能，从用户的角度针对软件界面、功能和外部结构进行测试，不考虑内部的逻辑
+-   集成测试：在单元测试的基础上，将所有模块按照设计要求组装成子系统或者系统，进行测试
+-   冒烟测试：在正式全面的测试之前，对主要功能进行的测试，确认主要功能是否满足需要，软件是否能正常运行
 
 ### 开发模式
 
-- TDD: 测试驱动开发，英文为 Testing Driven Development，强调的是一种开发方式，以测试来驱动整个项目，即先根据接口完成测试编写，然后在完成功能是要不断通过测试，最终目的是通过所有测试
-- BDD: 行为驱动测试，英文为 Behavior Driven Development，强调的是写测试的风格，即测试要写的像自然语言，让项目的各个成员甚至产品都能看懂测试，甚至编写测试
+-   TDD: 测试驱动开发，英文为 Testing Driven Development，强调的是一种开发方式，以测试来驱动整个项目，即先根据接口完成测试编写，然后在完成功能是要不断通过测试，最终目的是通过所有测试
+-   BDD: 行为驱动测试，英文为 Behavior Driven Development，强调的是写测试的风格，即测试要写的像自然语言，让项目的各个成员甚至产品都能看懂测试，甚至编写测试
 
 TDD 和 BDD 有各自的使用场景，BDD 一般偏向于系统功能和业务逻辑的自动化测试设计；而 TDD 在快速开发并测试功能模块的过程中则更加高效，以快速完成开发为目的。
 
@@ -40,59 +40,59 @@ nodejs 是一门更新很快的语言，我们常常要维护老项目，老项�
 
 说起单元测试，市面上的单元测试工具形形色色，五花八门。最常使用的工具为:Jest Mocha Jasmine
 
-- 🛠 工具[Jest](https://www.npmjs.com/package/eslint)
-  安装
+-   🛠 工具[Jest](https://www.npmjs.com/package/eslint)
+    安装
 
-  ```bash
-  yarn add jest -global
-  ```
+    ```bash
+    yarn add jest -global
+    ```
 
-  - facebook 坐庄
-  - 基于 Jasmine 至今已经做了大量修改添加了很多特性
-  - 开箱即用配置少，API 简单
-  - 支持断言和仿真
-  - 支持快照测试
-  - 在隔离环境下测试
-  - 互动模式选择要测试的模块
-  - 优雅的测试覆盖率报告，基于 Istanbul
-  - 智能并行测试(参考)
-  - 较新，社区不十分成熟
-  - 全局环境，比如 describe 不需要引入直接用
-  - 较多用于 React 项目(但广泛支持各种项目)
+    -   facebook 坐庄
+    -   基于 Jasmine 至今已经做了大量修改添加了很多特性
+    -   开箱即用配置少，API 简单
+    -   支持断言和仿真
+    -   支持快照测试
+    -   在隔离环境下测试
+    -   互动模式选择要测试的模块
+    -   优雅的测试覆盖率报告，基于 Istanbul
+    -   智能并行测试(参考)
+    -   较新，社区不十分成熟
+    -   全局环境，比如 describe 不需要引入直接用
+    -   较多用于 React 项目(但广泛支持各种项目)
 
-- 🛠 工具[Mocha](https://mochajs.org/)
-  安装
+-   🛠 工具[Mocha](https://mochajs.org/)
+    安装
 
-  ```bash
-  yarn add mocha
-  ```
+    ```bash
+    yarn add mocha
+    ```
 
-  - 灵活(不包括断言和仿真，自己选对应工具)
-  - 流行的选择：chai，sinon
-  - 社区成熟用的人多，测试各种东西社区都有示例
-  - 需要较多配置
-  - 可以使用快照测试，但依然需要额外配置
+    -   灵活(不包括断言和仿真，自己选对应工具)
+    -   流行的选择：chai，sinon
+    -   社区成熟用的人多，测试各种东西社区都有示例
+    -   需要较多配置
+    -   可以使用快照测试，但依然需要额外配置
 
 个人推荐使用 jest 进行单元测试。理由如下：
 
-- jest 与 babel 对 es6 的转码集成良好。
-- jest 的 api 文档完整且 api 设计良好。
-- jest 对异步代码测试内置支持完善。
-- jest 内置完善的 mock 与 stub 工具。
-- jest 运行如飞。
-- jest 可自调用 istanbul，无痛生成覆盖率统计文档。
-- jest 使用约定大于配置的原则，需配置项较少，且同时兼顾定制需求。
-- 使用 jsdom，在 nodejs 环境可模拟浏览器环境，与 jest 集成后测试前端的浏览器环境代码。
-- jest 文档丰富且有广泛的开发者基础。
+-   jest 与 babel 对 es6 的转码集成良好。
+-   jest 的 api 文档完整且 api 设计良好。
+-   jest 对异步代码测试内置支持完善。
+-   jest 内置完善的 mock 与 stub 工具。
+-   jest 运行如飞。
+-   jest 可自调用 istanbul，无痛生成覆盖率统计文档。
+-   jest 使用约定大于配置的原则，需配置项较少，且同时兼顾定制需求。
+-   使用 jsdom，在 nodejs 环境可模拟浏览器环境，与 jest 集成后测试前端的浏览器环境代码。
+-   jest 文档丰富且有广泛的开发者基础。
 
 (Jest 常用 API)[https://jestjs.io/docs/en/api.html]
 
-- describe(name, fn)：描述块，讲一组功能相关的测试用例组合在一起
-- it(name, fn, timeout)：别名 test，用来放测试用例
-- afterAll(fn, timeout)：所有测试用例跑完以后执行的方法
-- beforeAll(fn, timeout)：所有测试用例执行之前执行的方法
-- afterEach(fn)：在每个测试用例执行完后执行的方法
-- beforeEach(fn)：在每个测试用例执行之前需要执行的方法
+-   describe(name, fn)：描述块，讲一组功能相关的测试用例组合在一起
+-   it(name, fn, timeout)：别名 test，用来放测试用例
+-   afterAll(fn, timeout)：所有测试用例跑完以后执行的方法
+-   beforeAll(fn, timeout)：所有测试用例执行之前执行的方法
+-   afterEach(fn)：在每个测试用例执行完后执行的方法
+-   beforeEach(fn)：在每个测试用例执行之前需要执行的方法
 
 Enzyme
 
@@ -101,9 +101,9 @@ Enzyme 是 Airbnb 开源的 React 测试工具库库，它功能过对官方的�
 
 三种渲染方法
 
-- shallow：浅渲染，是对官方的 Shallow Renderer 的封装。将组件渲染成虚拟 DOM 对象，只会渲染第一层，子组件将不会被渲染出来，使得效率非常高。不需要 DOM 环境， 并可以使用 jQuery 的方式访问组件的信息
-- render：静态渲染，它将 React 组件渲染成静态的 HTML 字符串，然后使用 Cheerio 这个库解析这段字符串，并返回一个 Cheerio 的实例对象，可以用来分析组件的 html 结构
-- mount：完全渲染，它将组件渲染加载成一个真实的 DOM 节点，用来测试 DOM API 的交互和组件的生命周期。用到了 jsdom 来模拟浏览器环境
+-   shallow：浅渲染，是对官方的 Shallow Renderer 的封装。将组件渲染成虚拟 DOM 对象，只会渲染第一层，子组件将不会被渲染出来，使得效率非常高。不需要 DOM 环境， 并可以使用 jQuery 的方式访问组件的信息
+-   render：静态渲染，它将 React 组件渲染成静态的 HTML 字符串，然后使用 Cheerio 这个库解析这段字符串，并返回一个 Cheerio 的实例对象，可以用来分析组件的 html 结构
+-   mount：完全渲染，它将组件渲染加载成一个真实的 DOM 节点，用来测试 DOM API 的交互和组件的生命周期。用到了 jsdom 来模拟浏览器环境
 
 测试的渐进性：
 
@@ -111,6 +111,16 @@ Enzyme 是 Airbnb 开源的 React 测试工具库库，它功能过对官方的�
 2. 组件单元测试
 3. 页面单元测试
 4. E2E 测试
+
+最终为了各种场景下 React 的单元测试，集成了下面的 lib：
+
+-   Jest：单元测试框架
+-   enzyme： React 测试库
+-   enzyme-adapter-react-16： enzyme 和 React 的配套库 用于保证 enzyme 渲染的版本和你使用的 React 版本是一致的。
+-   fetch-mock： 异步请求模拟
+-   babel-7-jest:Jest 对应的 babel
+-   eslint-plugin-jest：jest 对应的 eslint
+-   jsdom：虚拟 dom 环境
 
 ## 函数式单元测试
 
@@ -152,29 +162,25 @@ import moment from 'moment'
 const { uponDay, uponSeconds } = dateFormater
 
 describe('测试dateFormater', () => {
-  it('测试格式化到天，无时分秒', () => {
-    expect(uponDay(moment('2018-09-20'))).toBe('2018-09-20')
-  })
-
-  it('测试格式化到天，无时分秒，日期为字符串类型', () => {
-    expect(uponDay('2018-09-20')).toBe('2018-09-20')
-  })
-
-  it('测试格式化到天，带时分秒', () => {
-    expect(uponDay(moment('2018-09-20 08:08:00'))).toBe('2018-09-20')
-  })
-
-  it('测试格式化到秒', () => {
-    expect(uponSeconds(moment('2018-09-26T16:45:36.000+0000'))).toBe(
-      '2018-09-27 00:45:36',
-    )
-  })
-
-  it('测试格式化到秒，日期为字符串类型', () => {
-    expect(uponSeconds('2018-09-26T16:45:36.000+0000')).toBe(
-      '2018-09-27 00:45:36',
-    )
-  })
+    it('测试格式化到天，无时分秒', () => {
+        expect(uponDay(moment('2018-09-20'))).toBe('2018-09-20')
+    })
+    it('测试格式化到天，无时分秒，日期为字符串类型', () => {
+        expect(uponDay('2018-09-20')).toBe('2018-09-20')
+    })
+    it('测试格式化到天，带时分秒', () => {
+        expect(uponDay(moment('2018-09-20 08:08:00'))).toBe('2018-09-20')
+    })
+    it('测试格式化到秒', () => {
+        expect(uponSeconds(moment('2018-09-26T16:45:36.000+0000'))).toBe(
+            '2018-09-27 00:45:36',
+        )
+    })
+    it('测试格式化到秒，日期为字符串类型', () => {
+        expect(uponSeconds('2018-09-26T16:45:36.000+0000')).toBe(
+            '2018-09-27 00:45:36',
+        )
+    })
 })
 ```
 
@@ -216,26 +222,26 @@ import Permission from 'component/Permission'
 import permissionStore from 'store/permission'
 
 const TestPermission = () => (
-  <Provider store={{ permissionStore }}>
-    <Permission resource="ok">
-      <span>hasPermission</span>
-    </Permission>
-  </Provider>
+    <Provider store={{ permissionStore }}>
+        <Permission resource="ok">
+            <span>hasPermission</span>
+        </Permission>
+    </Provider>
 )
 
 describe('component/Permission', () => {
-  it('测试无权限', () => {
-    const app = mount(<TestPermission />)
-    expect(permissionStore.has('ok')).toBe(false)
-    expect(app.text()).toBe(null)
-  })
+    it('测试无权限', () => {
+        const app = mount(<TestPermission />)
+        expect(permissionStore.has('ok')).toBe(false)
+        expect(app.text()).toBe(null)
+    })
 
-  it('测试有权限', () => {
-    permissionStore.data.add('ok')
-    const app = mount(<TestPermission />)
-    expect(permissionStore.has('ok')).toBe(true)
-    expect(app.text()).toBe('hasPermission')
-  })
+    it('测试有权限', () => {
+        permissionStore.data.add('ok')
+        const app = mount(<TestPermission />)
+        expect(permissionStore.has('ok')).toBe(true)
+        expect(app.text()).toBe('hasPermission')
+    })
 })
 ```
 
@@ -256,20 +262,20 @@ import Search from 'page/A/Search'
 import CardTitle from 'component/CardTitle'
 
 describe('page/A', () => {
-  it('测试页面可完整渲染', () => {
-    const app = shallow(<A />)
-    expect(app.find(Card)).toHaveLength(1)
-    expect(app.contains(<Operation />)).toBeTruthy()
-    expect(app.contains(<List />)).toBeTruthy()
+    it('测试页面可完整渲染', () => {
+        const app = shallow(<A />)
+        expect(app.find(Card)).toHaveLength(1)
+        expect(app.contains(<Operation />)).toBeTruthy()
+        expect(app.contains(<List />)).toBeTruthy()
 
-    // 测试可完整渲染Card title属性
-    const title = app.find(Card).prop('title')
-    expect(title.type).toEqual(CardTitle)
-    expect(title.props.children.type).toEqual(Search)
+        // 测试可完整渲染Card title属性
+        const title = app.find(Card).prop('title')
+        expect(title.type).toEqual(CardTitle)
+        expect(title.props.children.type).toEqual(Search)
 
-    const app2 = shallow(<A showOperation={false} />)
-    expect(app2.contains(<Operation />)).toBeFalsy()
-  })
+        const app2 = shallow(<A showOperation={false} />)
+        expect(app2.contains(<Operation />)).toBeFalsy()
+    })
 })
 ```
 
@@ -295,12 +301,12 @@ describe('page/A', () => {
 
 现代比较流行的 e2e 测试框架有
 
-- Nightwatch
-- TestCafe
-- Protractor
-- WebdriverIO
-- Cypress
-- Jest puppeteer
+-   Nightwatch
+-   TestCafe
+-   Protractor
+-   WebdriverIO
+-   Cypress
+-   Jest puppeteer
 
 ### 测试前须知
 
@@ -313,23 +319,23 @@ Nightwatch
 
 ```javascript
 module.exports = {
-  'test notFound page': browser => {
-    browser
-      .url('http://localhost:8080/xxxx')
-      .maximizeWindow()
-      .useXpath()
-      .assert.containsText('//*[@id="app"]/div[3]/div[2]/h1', '404')
-      .assert.containsText(
-        '//*[@id="app"]/div[3]/div[2]/h2',
-        '抱歉，您访问的页面不存在',
-      )
-      .pause(1000)
-      .assert.urlContains('http://localhost:8080/xxxx')
-      .click('//*[@id="app"]/div[3]/div[2]/div/button')
-      .pause(1000)
-      .assert.urlContains('http://localhost:8080/Home')
-      .end()
-  },
+    'test notFound page': browser => {
+        browser
+            .url('http://localhost:8080/xxxx')
+            .maximizeWindow()
+            .useXpath()
+            .assert.containsText('//*[@id="app"]/div[3]/div[2]/h1', '404')
+            .assert.containsText(
+                '//*[@id="app"]/div[3]/div[2]/h2',
+                '抱歉，您访问的页面不存在',
+            )
+            .pause(1000)
+            .assert.urlContains('http://localhost:8080/xxxx')
+            .click('//*[@id="app"]/div[3]/div[2]/div/button')
+            .pause(1000)
+            .assert.urlContains('http://localhost:8080/Home')
+            .end()
+    },
 }
 ```
 
@@ -337,46 +343,46 @@ Jest puppeteer
 
 ```javascript
 describe('goto page', () => {
-  beforeAll(async () => {
-    // page = await browser.newPage()
-    await page.setViewport({
-      width: 1920,
-      height: 1080,
+    beforeAll(async () => {
+        // page = await browser.newPage()
+        await page.setViewport({
+            width: 1920,
+            height: 1080,
+        })
     })
-  })
 
-  it('go to user page', async () => {
-    await page.goto(`${pageUrl}/user`)
-    await page.waitForSelector('label[for="account"]')
-    await page.waitForSelector('label[for="name"]')
-    await page.waitForSelector('label[for="mail"]')
-    await page.waitForSelector('label[for="mobile"]')
-  })
-
-  it('coverage', async () => {
-    await Promise.all([
-      page.coverage.startJSCoverage(),
-      page.coverage.startCSSCoverage(),
-    ])
-    await page.goto(pageUrl)
-    await page.hover('.ant-menu-root')
-    await page.click('.ant-menu-item a[href="/user"]')
-    // await jestPuppeteer.debug()
-    const [jsCoverage, cssCoverage] = await Promise.all([
-      page.coverage.stopJSCoverage(),
-      page.coverage.stopCSSCoverage(),
-    ])
-    const coverage = [...jsCoverage, ...cssCoverage]
-    let totalBytes = 0
-    let usedBytes = 0
-    coverage.forEach(entry => {
-      totalBytes += entry.text.length
-      entry.ranges.forEach(range => {
-        usedBytes += range.end - range.start - 1
-      })
+    it('go to user page', async () => {
+        await page.goto(`${pageUrl}/user`)
+        await page.waitForSelector('label[for="account"]')
+        await page.waitForSelector('label[for="name"]')
+        await page.waitForSelector('label[for="mail"]')
+        await page.waitForSelector('label[for="mobile"]')
     })
-    log(`Bytes used: ${(usedBytes / totalBytes) * 100}%`)
-  })
+
+    it('coverage', async () => {
+        await Promise.all([
+            page.coverage.startJSCoverage(),
+            page.coverage.startCSSCoverage(),
+        ])
+        await page.goto(pageUrl)
+        await page.hover('.ant-menu-root')
+        await page.click('.ant-menu-item a[href="/user"]')
+        // await jestPuppeteer.debug()
+        const [jsCoverage, cssCoverage] = await Promise.all([
+            page.coverage.stopJSCoverage(),
+            page.coverage.stopCSSCoverage(),
+        ])
+        const coverage = [...jsCoverage, ...cssCoverage]
+        let totalBytes = 0
+        let usedBytes = 0
+        coverage.forEach(entry => {
+            totalBytes += entry.text.length
+            entry.ranges.forEach(range => {
+                usedBytes += range.end - range.start - 1
+            })
+        })
+        log(`Bytes used: ${(usedBytes / totalBytes) * 100}%`)
+    })
 })
 ```
 
