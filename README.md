@@ -24,6 +24,7 @@
   * Nextjs Nuxtjs服务端渲染学习 50%
   * UI库编写
   * Flutter学习
+  * PIXI学习
 
 ## blog内容
 
