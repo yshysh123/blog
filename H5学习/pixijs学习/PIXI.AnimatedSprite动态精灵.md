@@ -8,7 +8,7 @@ this.visible_skier.visible = false
 this.visible_skier.name = 'visible_people'
 // people 帧动画
 const texture = PIXI.Texture.fromImage(
-    'https://n2-q.mafengwo.net/s12/M00/F8/7F/wKgED1w2ueOAf3HBAAA_lW3LjcI756.png',
+    '',
 )
 const cutnum = 10
 const width = parseInt(texture.width / cutnum, 0)
