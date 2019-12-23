@@ -21,3 +21,28 @@ var twoSum = function(nums, target) {
   }
 };
 ```
+
+## 股票问题
+
+假设把某股票的价格按照时间先后顺序储存在数组中，请问买卖该股票一次可能获得的最大利润是多少？例如，一只股票在某些时间节点的价格为{9,11,8,5,7,12,16,14}。如果我们能在价格为5的时候买入并在价格为16的时候卖出，则能收获最大的利润11。
+
+```javascript
+int MaxDiff(const int *numbers, unsigned length) {
+    if (numbers == NULL || length < 2)return 0;
+ 
+    int min = numbers[0];
+    int resu = numbers[1] - min;
+ 
+    for (int i = 2; i != length; i++) {
+        //检查前一天的值是不是最小值，是就更新最小值
+        if (numbers[i-1] < min) {
+            min = numbers[i-1];
+        }
+        //当前时间卖出能赚到最多的钱吗
+        if ((numbers[i] - min) > resu) {
+            resu = numbers[i] - min;
+        }
+    }
+    return resu;
+}
+```
